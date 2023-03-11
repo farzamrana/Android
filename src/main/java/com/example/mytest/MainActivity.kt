@@ -1,5 +1,6 @@
 package com.example.mytest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcel
@@ -19,18 +20,14 @@ class MainActivity() : AppCompatActivity(), Parcelable {
         setContentView(R.layout.activity_main)
         val text: TextView = findViewById(R.id.textView)
         val tvInput: Button = findViewById(R.id.button)
-        Log.d("aa","hello MY" +
-                "APP" +
-                "IS" +
-                "RUNNING")
-       text.setOnClickListener { makeText(this, "hey", Toast.LENGTH_SHORT).show() }
+
+
         tvInput.setOnClickListener {
-            makeText(
-                this,
-                "this is my first message in order to write my code",
-                Toast.LENGTH_SHORT
-            ).show()
-            Log.d("message","button clicked")
+
+            val message: String = text.text.toString()
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+            val intent=Intent(this,SecondActivity::class.java)
+            startActivity(intent)
         }
     }
 
